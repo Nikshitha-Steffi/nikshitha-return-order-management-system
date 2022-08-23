@@ -1,0 +1,92 @@
+<br>
+<br>
+<br><br>     <div id="row">
+        <div class="col-md-12 p-3">
+            <h3>Please Fill the Details &nbsp;&nbsp;&nbsp;&nbsp;
+                <span routerLink="/home"><button class="btn btn-primary"><i>More</i></button></span></h3><br>
+                <form  class="col-xs-5" [formGroup]="returnForm" (ngSubmit)="onSubmit()" >
+                    <div class="alert alert-danger" *ngIf="errorMessage">
+                        {{errorMessage}}
+                    </div>
+                    <div *ngIf="isLoading;else returnFormDiv">
+                        <app-loading-spinner></app-loading-spinner>
+                    </div>
+                  
+                <ng-template #returnFormDiv><br>
+                    <div class="form-group" >
+                        <label  for="name">USERNAME</label>
+                        <input [readonly]="isLoading" type="text" class="form-control" 
+                            formControlName="name" placeholder="Enter Username"
+                            name="name" />
+                        <span *ngIf="returnFormControls.name.invalid &&
+                returnFormControls.name.dirty" style="text-align: center">
+                please provide valid username</span>
+                    </div>
+                    <div class="form-group">
+                        <label  for="contactNumber">CONTACT NUMBER</label>
+                        <input [readonly]="isLoading" type="text" class="form-control" 
+                            formControlName="contactNumber" placeholder="Enter your contact number"
+                            name="contactNumber" />
+                        <span *ngIf="returnFormControls.contactNumber.invalid &&
+                returnFormControls.contactNumber.dirty" style="text-align: center">
+                please provide valid contact number (eg, 9912345678)</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label  for="componentName">COMPONENT NAME</label>
+                        <input [readonly]="isLoading" type="text" class="form-control" 
+                            formControlName="componentName" placeholder="Enter component name" name="componentName" />
+                        <span *ngIf="returnFormControls.componentName.invalid &&
+                        returnFormControls.componentName.dirty" style="text-align: center">
+                            Please enter valid component name
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="componentType">CCOMPONENT TYPE</label>
+                        <select class="form-control" formControlName="componentType" name="componentType">
+                            <option value="Integral" [disabled]="isLoading" [selected]=true>
+                            Integral Item
+                            </option>
+                            <option value="Accessory" [disabled]="isLoading">
+                                Accessory
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label  for="quantity">QUANTITY</label>
+                        <input [readonly]="isLoading" type="number" class="form-control"
+                            formControlName="quantity" placeholder="Enter Quantity" name="quantity" />
+                        <span *ngIf="returnFormControls.quantity.invalid &&
+                        returnFormControls.quantity.dirty" style="text-align: center">
+                            Value of quantity should be between 1 and 9999
+                        </span>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center" *ngIf="isLoading">
+                        <img src="https://www.shipbob.com/wp-content/uploads/2019/12/image35.gif" style="height: 100px"
+                            alt="loading" />
+                    </div>
+                    <div class="row" *ngIf="!isLoading && !errorMessage">
+                        &nbsp; &nbsp; &nbsp; 
+                         <button class="btn btn-warning" type="reset" (click)="resetForm()">
+                            CANCEL
+                        </button>
+                       <!-- {{this.returnForm.valid}} -->
+                        &nbsp; &nbsp; &nbsp; &nbsp;<button class="btn btn-primary" type="submit" [disabled]="!returnForm.valid">
+                            PROCEED
+                        </button><br><br>
+                    </div>
+
+                </ng-template>
+                <div *ngIf="errorMessage">
+                    <span style="padding-right: 1em;">{{ errorMessage }}</span>
+                    <button class="btn btn2 mx-auto" type="reset"  (click)="resetForm()">
+                        Try again
+                    </button>
+                </div>
+                </form>
+            </div>
+        
+        </div>
+   

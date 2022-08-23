@@ -1,0 +1,121 @@
+<div *ngIf="isLoading;else elseBlock" style="text-align: center;">
+    <app-loading-spinner></app-loading-spinner>
+</div>
+
+<ng-template #elseBlock>
+   
+<table align="center"  cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
+    <tr>
+        <td align="center"><br><br><br>
+           <!--
+                <img src="https://img.icons8.com/carbon-copy/100/000000/checked-checkbox.png" width="125" height="120" style="display: block; border: 0px;" /><br>
+           --> 
+           <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPIAAADQCAMAAAAK0syrAAAAnFBMVEX39/cBsgAArgAAsAD/+/8ArAD6+Pr9+f0AswD3+Pf59/n//f/9+fz7+vsAqgDy9/Lj8ePq9Oqu3a7b7dp0y3MruCqBzoLD5cSX1pjo8+jM6czd7t3Q6tCt3a2i2KK/5r9ox2hEv0W24bZYw1nD5sGFzoU4ujqc1psYtRmS1I8wty98y3ik2qVPwEy13rZzyXJhxGJawVpTwlN80Hoy7kleAAARoElEQVR4nO1dCXfjKBKOACEkpJYd31d8dBIfsXP1//9vCz5ikABLDpCebX+z7832dCJRKqi7iru7G2644YYbbrjhhhtuuOE64PynV+AbqLXNfnoNXoHpwwz99CK8Isp3c5r89Co8AtMp7OT/EsVp3A6DHP/0MjwCtToQtP4hinG2BBAMo59ehz9EzU8QhJN/R1gn9DGAQfiE4p9eiS/guAuCAMxo/K+QjBrPEMJgjv4V9ZTQBWMxCTrNf0VY47TNKA4COPhhipMEY5ye/ofd7TiujDnFP6ieEpymCKGsORoPH6fT19dpbzhu5ew/oSi1zwc62bM4CBc/op4SHCHUHN+vZ3MSghAAZhrwfwAIQ0A+Z+vFmJEeWWQ55hbmnsdr/xQz5qJ4uJx1GKlwv9NKgIx42Jktx7EtslFrc+AxnFEbz6uBhJPbnwMQqIktEv7ZH2fo21QfJPUe88yrekowyhezILxM7YHkABIIw+DtMUbfOto464bHT7zy6j1hFE/f2YGtRq8IELR76fVUR8356aVg5JFijMbdq+jlGzyAgKwbVxKNHvlbCd814aM39ZSk9HUeXkOuQDj4/UjT2gcxocuvF4cPvoR1guIlBPw7fwfs18POJIvqEY3j95PgImHXk7BO0rwfACM11QFW27QO0WljczxL7HD89sTj9O6BncVvcvgLkH28SVb5TNMe/NL8cOPHW8T0dXWZw3vxsv8qhP370ucBnV41QRbTpfhuL75EQluXhRbjAwy5oRlyu5ObnZfEOgw/GhX8XYzfwdfnI+E49UBxGnd1WgnuucooDDazp+WCuxOj0ag1Hvbu+08fHfY3XDOpiYeESe9+dImCdLBhDzjR7MWXSGhvBbWbFIKQvC8fG/HebeJO4wFpyvwNFI+m/Y/AxG+wGZsZjYaiSevFlzh4Lmo2QbBqTxoIMVLVy2YeNKN8NHnXGqckCNcGMZbQrXii4LsH9YTGHY3YgqCzZh5SBYd473E9EQ3VBDwPtLYU7UoyZBM79yVEk6ewIVfdFq3uGjFHhA5f1GqdHfaFenPjeCf9BnAf6srOJo/EFxh+Tu9qW8rc/XpWsxp0aflpcTToSD8dDp0L66jRYV5fmSvgZUSvcn2ZiT6eKYU/mDdLmxsNoSRDPOQl0LDMYvYFwNPgG14vRo22SoLDYCQTFNOFfKbgi3PRhe7DoGRgQtBtfs/N3xOt2t5wKtKc0H4ovRx+uqd4XeYxBO/XOrsiMGp9KmSEuHFx9ib9BIQd12GQBL0URTVhrx0qpMw1wGgalM902D+JJ5zvgLzBYMM1xbRdYMPeOKT2JGYav5QZHR6T4ymXm9LfgJ7jip+EvpXWA55HdmtQ0LDom8Gjx4BaQZHivmNhraI4XFNs2U/FmWjKsm3UOtCFeqBIsfOYNSrtORgMHXzmBE3BWfXC8UEzo/vS253HrNFT8Z1gl7uxe1BjcxJToHWgmPZ/FXdY4NrORFtZPbDVvDhIph2A49kh33HkcUK75TPl2s5Me0XtFE5cniS05ibHicfZOyhaP87tTDySvjJfzaPbV1J+dg+ymntORYqBazsziWUDgdkfLdfGPJ0eeYzzedkQdS26kuwTyhQHo9R5DDU92JK42VG4G67tTGZYFzaWl3TXno9pY1WkmLltruOZXHQJr2W72l+CL2qVOMxE173jg4zzwq6GLR8x4z3SlsK3Ai/O5ciHvLNAz1s1hiocwawu1188WsivDe/9UdxTxdicR/dwXjhHT97qT9BCFUd1n4pBM2lbww9/PF4oQk5BuHW9gLQHpGjmylu/AlqodjV03hSTZCspguqveh9NVLsaPjtvikFLeVsvfW1rdB+Wc3zQfazrLpFkF+ERVD+5esZjRVaThL3I9ftRV7a6PFX9xupd/ZVTTdxtbjyQUprAubA8Yp8eUBzkj6N+zJvOaEZt8STDuR+NHKv1cQBP2oK2nWXQcUPOaXqS1oxiZXUCGB2Du2zXu0oooxeJyV0/2xpNVRYIo/ho6GLmacClIwsslwN8TTdvKSBV2tXs9W9H0RWv2J9WboIiqC+8HELXmYEDoqG6lBtujkSi3zyAD+5dHDJueIm482FpRi1dWdXRBjnwgQRzFwzAU3GHwa2PsABWxUA4fk0P0d3oFFsGYwdsRrvzG0kAfQwywAMNj8GxCDdpfrHgj30244ZkhvQ9FHfj5kpBLn/7saEvoc/nr2BfT6V9yYPy4DPiu41mW5+yT0hI08BX6yct7Yif2UN1dxIrIvR7hL0DdfhV2Hj2y69xS9zXHgyvhGkfNcVfBZqyQAUDyxsvWov5aycqQQZVVEwcsDvtMFltwnvLO5tK+3riXEOhtbpEknms51wMWgsbwfbOluQ1CS8Ir+TbHasaB5lXr/bOugJLgXxg1+hMt2IWyvQ9E4xQPhg0c/SNRj70WMqmnuhai4JTUFJMqk2t7j0plAv0+zpO42m7w1tWg+fuNL+y4C0d685xwUePxJ0dPNnc2UkmvVcbhMDZcl9ZvO8RYYS3x9cQrTW6mDMjZyaYHjnvBrixSbKsoua6gRWoVShEh+CjUXsdONcYXUG5oy+TpKrNTE30cCaFwL5mX6MpKLYAEQiWNac9JHSna7QCpaiEFLWAjxZJRm/Ck0ON04IeQwIL1We8UOizXoafznSiCz6XeiDxq+jD2wyBIXH/BGplgFWp3z1qzbhgDrCinv3A5HKcHg9Eki0WJidN8cOrE29JXCpo+OJ0jYph9KqO7XGKXxUvppIBZo/LeCiemLXSb0x7+m5luKuaOVJWCRwf0lbxELWFHwntpWvSibAQ0FM+V/qZ0nIrnjLc1M0sILCjdIjlpdmTX1JeRnGi9qt91bc7QlKtZCfJnjVPILoJZXgoOpAP1gIX6Lf4enX4Icl1gpavBa6qBC2YsNY9QVdqnYiRZmivTgaJMuJZ89jItLO/ws7G1/T1B/lT8+sJM0bOW1D3U/WRiV9Su3ba1sovzqbFpU3HfAn9F9PKfLQT3rqx1WeAm+J5UQvsO66mOuW1CjRf0M64of9i4VT7veSska2YHx4LJIOFVhClLa1O5dgZDYViZkD6WoaIbSSGIUNbWVcpLaTRUXugB8NxJsZmjzjThboYOgbnP52cf8/e4MlUqMUhprRAXCz8k0gOQkPho6rF7OsrmwomU0ECQDC0RHL0cCaEhMaEY26cNqHnVvSoH5wUGhN+WAwnAFuBkUhUHuasQDo0DEEi4EXjaeORQdjvjJpHcuXBq62NLQUSzUIRPeknCkBmESq5wGS9nuQLNTh4JJJsK7ArxU4v6IGE6nIMh/Ur9WuhSFJCeEGfMy9PeLytfCjj3Pmp5ILqw02TERZ8KDSVweq6PEkhyV0Y2QLJ8NLG5sXLpnEqoNzbk6qKrL9eeCmpm+S/hIifA5IZly9WDyCz4Vl0xHDT8NOh+vALcMTlGmf57mDpG0b1bWRNlWTaw0+qdD8lkjVs6yxLqeWLG/sQBdNqZwLkCDsqt/KdUaHQR0odWZPYohlLqmTr0dZ0nE/p4cOPGk4+0cVSRbjRywXrq8JT0btxvNM5i5eabBBQJeMi+zy2IkGp0CpMwkqWe74yGJ5nxZPkBhsk6FQJEoo+D7HW3Sp7UpWeqk+k7Z9xfxSsht3AZFerisOf3rvwpKr6yyJM5gUvctgvjfYN8bKKA6xkf9lW1Y5UoVu1/InuDNO/gv09IemjISgaPFfLkEvR18BaoVImqr6KUUTc1HOQQM7C1BD5gaTqHkWfwq91rMWxqbgasy93hoGHkOfykFF0VZ6XIaVbq67tMqQ49qpqrot29VubMWS4MymycpJRDTmO3bZHshhF1GQrFKvJng07N4AGozQIRxXDs5JohUtr2YpoK8X7quq+QmNCDVQfAyNG+2zmpCTFXONTImMCw4CK0vqusAGrmUmVgAdiIrVGYyfSJ5lMqGFRULG0FVgciiSH1auXlOnz7EaKqxdASNLLap2lZBhW8W9OwEbDU4NN9W+KpSNns6cnErs7a4UeqNHwVOJXjR5sJCpCWM0WrgYxcU3qVaHQT5N2LoGprjpFeuJRhsBmC6Y8LQbWsWSNoa0ySNCpcQ0SU4PC9+xYHekm1YPXiz0ww7MOm8G4xoy0SJqIbXfWBjvMAs31muGN0a0i6okgNBc/1tRqK0Ch8rlW5jpBuqIXBVZ1bveSzTtrzvIRSCzJqNmtYqoPKKCOAuRxCPHB9tyo49OfRMFbswxF03JdRrku1fxc0f0EtvvzJI+FhDXnIFFDnu0MaCwXKCMdioLR+pSAQrdKzQL3Q8ftJRBTmYECaCaGUW3v62KWBtbsa81a6r5rkWBVis6EZCAmRRx09ciF93Bb0xlHywuaikBQc9qQlB100pJI5+L66p06/uu/jRdUEN6tWuuRshNV01aohnQiOs1gUdO6K06QKvG4bhsl01Cie+diCmcSi2cRVo76nYDHxrRz3Rla0iAbaNm+PqFwdiZ1Q2vRSB8vAMu6X1AuFAN1ZUs1xAPZoKhdL5nmv9UmyRXjh3Fh/IWjfmqpcIdccelJQhf8OhpRW/ELzcCfuPZBlNYCnV3AUuiRucYjT+OHldSDAQF4a6Ck7jyndBwKfTbEXdO8bDfC31f06CQR7b10+K1K/FrHkLzfX9UYSTfCBHRY1xisAXl4MLlUhaZBirJmb7Hs97e9VnzFjXd3xZJgxmR3TfPyCfpGbjNNI/bPtV3Osp9MrHbBKd4lKWfnswLVQGLdFIHE5WS3uFA2HdqfbFEBhQoF646yjCQOJLgfF1gGl9biGqrmZa9FJHeAeRgKWUSxvdnDtFVpGjgBb9TPjMYTYio3YVRpwPomZGkJPV6MekDpLgMP85nogxCM4Der+psVfVcayAkNHVQWQXfiRybmBhfLQHLNDfF0b7jUGb7HIPN0nqNi7nblY+zY3aFvCsov9kNzqcjVzzWlHKVrpDqOLp+RkbYKRUTOL1M6o9RaDVdND/dWFHl8lSt3LcptMquB8xn7pWGN/saRcxS6Xnhso+WWz8XR/ofZ2D7NoMLdSoHruxxoaRpWaXiOcxRbUUkQ1h2NUx24cA8tt0Gc3uWkRqkdioSzzM0FfGlebG6unc2xgoR+FG88hJuRi82NxrJygoQ4vz5Kg/izFIoHEwvXeMrAqF9oECbQ/V1/GiTZrpROBO/lu3O/9Q7UULzkpyjeX6VVWg6EC2TvRKfpsjx6CLS9xyUEZB9F3QED8DmyJLoxGj+XUzo/dY6PSFTlxzB8yi3wIUHNtiKHJc9o/AEkylERIHjIou8RHUf5WpWo9HCJ9kVQZWk9DLbxN9aGUd5XVh2A3g/zeA+mNlUkA7K89qbtDA3UUxxgp+HbylTjcPFisd6HBAD+adGoLtU4QkPl5fHsgb9jx/crVwbOnjS5cvC8baIaV7niDDX6HeVsEm7E/6RyKiChC3W9D9vf4PeEUV0ho5CkiDa2u1BTOeTmpuNvINIVRTCAcNMf5pRxW0N3nOAUobz3pObvnuBwFvvPBZmB0cQwohGGcP702soQQjzHinHCwf6dphH7b/H4vjuHEBRvChdYPP2LNvUX0vxdW7W4n5YEQtCZdbeLYWMwaHIMBq3e4qH73gH73ayhFzIWt+tXk3gBRr3LbVG8XgJAflM4/z8h/8OlXwHP47/rFItIM96QYGiZIUeGH/9EAnMxK/87QCbo72TxAcwu7upE7lWAcB3/HdaHHszB/QOMjbqVieUa7in/e/f0GZhx2gLJzI4J1tearN7BnIJlcFksmRF2vuWY+EdEpx+gOCC8OgCcDek33U//wHSw7ITX9C/DX/NtjnwlcK2C+USt/jwEewleld8A7rYN5LjIxyUY1c3FGwGgiuJiBsqqu8hRbX/zbwP3GEb3L3MYnuguMZzpNBAG8+5rA9H/OrkncLLj1qL/Nl8xXQsOhbr7Wl1+j8lq/taftjCq41j/J8D8JkY4yhvMlZhMtg/Lh+1kshiOG8ytRFdXsP4XwClniDjSFP9f03rDDTfccMMNN9xwgwL/Ayxa6kKUBw3IAAAAAElFTkSuQmCC" width="125" height="120" style="display: block; border: 0px;" /><br>
+          <h2 style="font-size: 30px; font-weight: 800;  color: #333333; margin: 0;">
+                Return Confirmation
+            </h2>
+        </td>
+    </tr>
+   
+    <tr>
+        <td align="left" style="padding-top: 20px;">
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                    <td width="75%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
+                        Return Confirmation #
+                    </td>
+                    <td width="25%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
+                        {{returnConfirmation.requestId}}
+                    </td>
+                </tr>
+                <tr>
+                    <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
+                       Component Type
+                    </td>
+                    <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
+                       {{returnConfirmation.componentType}}
+                    </td>
+                </tr>
+                <tr>
+                    <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                        Component Name
+                    </td>
+                    <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                       {{returnConfirmation.componentName}}
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                        Quantity
+                    </td>
+                    <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                       {{returnConfirmation.quantiy}}
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                       Processing Charge
+                    </td>
+                    <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                        {{returnConfirmation.processingCharge}}
+                    </td>
+                </tr>
+                <tr>
+                    <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                       Packaging and Delivery Charge
+                    </td>
+                    <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                        {{returnConfirmation.packageAndDeliveryCharge}}
+                    </td>
+                </tr>
+                <tr>
+                    <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                      Date of Delivery
+                    </td>
+                    <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
+                        {{returnConfirmation.dateOfDelivery}}
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" style="padding-top: 20px;">
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                    <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; border-top: 3px solid #eeeeee; border-bottom: 3px solid #eeeeee;">
+                        TOTAL
+                    </td>
+                    <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; border-top: 3px solid #eeeeee; border-bottom: 3px solid #eeeeee;">
+                        {{returnConfirmation.processingCharge+returnConfirmation.packageAndDeliveryCharge}}
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <div class="alert alert-danger" *ngIf="errorMessage">
+        {{errorMessage}} - <span (click)="onLater()">Please try again</span>
+    </div>
+    <div class="alert alert-success" *ngIf="successMessage">
+      <!--  {{successMessage}} - <span routerLink="/home"><button>Go to home</button> </span>-->
+      {{successMessage}} - <span routerLink="/auth"><button>Sign out</button> </span>
+    </div>
+
+    <tr *ngIf="!errorMessage && !successMessage">
+        <td align="left" style="padding-top: 20px;">
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                    <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; ">
+                       <button class="btn-lg btn-lg-success" (click)="onConfirm()">Confirm</button>
+                    </td>
+                    <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; ">
+                        <button class="btn-lg btn-lg-success" (click)="onLater()">Later</button>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</ng-template>
